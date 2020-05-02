@@ -22,11 +22,26 @@ function renderTodoApp() {
     let app = document.querySelector("#app")
     let h1 = document.createElement("h1")
     // your code here
+    let ul = document.createElement('ul')
+    
+    for (let task of todos) {
+        let li = document.createElement('li');
+        li.style.listStyle="none"
+       li.innerHTML = `<input type="checkbox" id="task" name="task"></input>
+
+       <label for="task">${task.description}</label>`
+       if (task.completed === true){
+        li.innerHTML = `<input type="checkbox"  checked id="task" name="task"></input>
+       
+       <label for="task">${task.description}</label>`
+       }
+       ul.appendChild(li)
+    }
 
     h1.innerText = "Todo List"
 
     app.appendChild(h1)
-    // and maybe some here
+    app.appendChild(ul)
 }
 
 renderTodoApp()
